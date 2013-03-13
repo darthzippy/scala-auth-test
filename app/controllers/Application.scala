@@ -20,8 +20,8 @@ object Application extends Controller with LoginLogout with AuthConfigImpl {
   }
 
   val loginForm = Form {
-    mapping("email" -> email, "password" -> text)(Account.authenticate)(_.map(u => (u.email, "")))
-      .verifying("Invalid email or password", result => result.isDefined)
+    mapping("login" -> email, "password" -> text)(User.authenticate)(_.map(u => (u.login, "")))
+      .verifying("Invalid login or password", result => result.isDefined)
   }
 
   def login = Action { implicit request =>
@@ -74,7 +74,7 @@ trait AuthConfigImpl extends AuthConfig {
 
   type Id = Int
 
-  type User = Account
+  type User = models.User
 
   type Authority = Permission
 
@@ -82,7 +82,7 @@ trait AuthConfigImpl extends AuthConfig {
 
   val sessionTimeoutInSeconds = 3600
 
-  def resolveUser(id: Id) = Account.findById(id)
+  def resolveUser(id: Id) = models.User.findById(id)
 
   def loginSucceeded(request: RequestHeader) = Redirect(routes.Messages.main)
 

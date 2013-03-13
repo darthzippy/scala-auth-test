@@ -7,6 +7,8 @@ import scalikejdbc.SQLInterpolation._
 case class Account(id: Int, email: String, password: String, name: String, permission: Permission)
 
 object Account {
+  Class.forName("org.postgresql.Driver")
+  ConnectionPool.singleton("jdbc:postgresql://stage.db.wieck/nytsyn", "wieck", "")
 
   val * = { rs: WrappedResultSet =>
     Account(

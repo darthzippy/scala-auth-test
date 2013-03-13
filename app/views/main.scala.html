@@ -6,10 +6,31 @@
     <head>
         <title>@title</title>
         <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/bootstrap.css")">
         <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
         <script src="@routes.Assets.at("javascripts/jquery-1.9.0.min.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.at("javascripts/bootstrap.min.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.at("javascripts/main.js")" type="text/javascript"></script>
     </head>
     <body>
+      <div class="container">
+        <div class="navbar">
+          <div class="navbar-inner">
+            <a class="brand" href="/">Wieck Auth Test</a>
+            <ul class="nav">
+              <li><a href="/users">Users</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="btn-group">
+          <a href="/login" class="btn">Login</a>
+          <a href="/logout" class="btn">Logout</a>
+        </div>
+      </div>
+      <div class="container">
         @content
+      </div>
     </body>
 </html>
+
