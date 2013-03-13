@@ -84,7 +84,7 @@ trait AuthConfigImpl extends AuthConfig {
 
   def resolveUser(id: Id) = models.User.findById(id)
 
-  def loginSucceeded(request: RequestHeader) = Redirect(routes.Messages.main)
+  def loginSucceeded(request: RequestHeader) = Redirect(routes.Users.index)
 
   def logoutSucceeded(request: RequestHeader) = Redirect(routes.Application.login)
 

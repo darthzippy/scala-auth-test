@@ -1,0 +1,11 @@
+@(title:String, users:Seq[User])
+
+@main(title) {
+
+  <h1>Users<h1>
+  <h2>Count: @users.length</h2>
+
+  @for(user <- users) {
+      <p><a href="/users/@user.id">@user.first_name @user.last_name</a> - @user.login</p>
+  }
+}
